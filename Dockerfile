@@ -4,7 +4,7 @@ RUN mkdir /app
 
 WORKDIR /app
 
-ADD requirements.txt /app
+COPY requirements.txt /app
 
 COPY . /app
 
