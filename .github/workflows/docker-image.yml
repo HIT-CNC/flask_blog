@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set env
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}}" >> $GITHUB_ENV
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     - name: Test
       run: |
         echo $RELEASE_VERSION
@@ -34,7 +34,7 @@ jobs:
 
     - name: Build and Push the Docker image
       run: |
-        docker build -t 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ github.sha }} .
+        docker build -t 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }} .
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:latest
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{env.RELEASE_VERSION}}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }}
