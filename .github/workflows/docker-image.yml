@@ -32,6 +32,6 @@ jobs:
         docker build -t 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ github.sha }} .
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:latest
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{env.RELEASE_VERSION}}
-      docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ github.sha }}
-      docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ env.RELEASE_VERSION }}
-      docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:latest
+        docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ github.sha }}
+        docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:${{ env.RELEASE_VERSION }}
+        docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog-staging:latest
