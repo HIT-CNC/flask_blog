@@ -34,18 +34,10 @@ jobs:
 
     - name: Build and Push the Docker image
       run: |
-<<<<<<< HEAD
         docker build -t 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }} .
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:latest
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{env.RELEASE_VERSION}}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ github.sha }}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:${{ env.RELEASE_VERSION }}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog_staging:latest
-=======
-        docker build -t 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }} .
-        docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:latest
-        docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{env.RELEASE_VERSION}}
-        docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }}
-        docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ env.RELEASE_VERSION }}
-        docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:latest
->>>>>>> master
+
