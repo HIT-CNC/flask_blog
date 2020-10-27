@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 from init_db import initDB
+from prometheus_flask_exporter.multiprocess import GunicornPrometheusMetrics
 
 def get_db_connection():
     conn = sqlite3.connect('./data/database.db')
@@ -21,6 +22,7 @@ def get_post(post_id):
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+metrics = GunicornPrometheusMetrics(app)
 
 
 @app.route('/')
@@ -87,6 +89,7 @@ def delete(id):
     conn.close()
     flash('"{}" was successfully deleted!'.format(post['title']))
     return redirect(url_for('index'))
+
 
 
 if __name__ == '__main__':
