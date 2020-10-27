@@ -12,5 +12,7 @@ RUN pip3 install -r requirements.txt
 
 RUN mkdir /data
 
+ENV prometheus_multiproc_dir /tmp
+ENV METRICS_PORT 9200
 #ENTRYPOINT ["python", "app.py"]
-CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "server:app"]
+CMD ["gunicorn","-c config.py", "-w 4", "-b", "0.0.0.0:8000", "server:app"]
