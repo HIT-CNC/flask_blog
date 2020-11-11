@@ -34,9 +34,18 @@ jobs:
 
     - name: Build and Push the Docker image
       run: |
+        #pushing to aws
         docker build -t 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }} .
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:latest
         docker tag 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }} 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{env.RELEASE_VERSION}}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ env.RELEASE_VERSION }}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:latest
+        #pushing to dockerhub
+        docker build -t nashadabdulrahiman/flask_blog:${{ github.sha }} .
+        docker tag nashadabdulrahiman/flask_blog:${{ github.sha }} nashadabdulrahiman/flask_blog:latest
+        docker tag nashadabdulrahiman/flask_blog:${{ github.sha }} nashadabdulrahiman/flask_blog:${{env.RELEASE_VERSION}}
+        docker push nashadabdulrahiman/flask_blog:${{ github.sha }}
+        docker push nashadabdulrahiman/flask_blog:${{ env.RELEASE_VERSION }}
+        docker push nashadabdulrahiman/flask_blog:latest
+
