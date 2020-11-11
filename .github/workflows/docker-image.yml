@@ -41,11 +41,12 @@ jobs:
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ github.sha }}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:${{ env.RELEASE_VERSION }}
         docker push 207080326074.dkr.ecr.ap-southeast-1.amazonaws.com/flask_blog:latest
-        #pushing to dockerhub
-        docker build -t nashadabdulrahiman/flask_blog:${{ github.sha }} .
-        docker tag nashadabdulrahiman/flask_blog:${{ github.sha }} nashadabdulrahiman/flask_blog:latest
-        docker tag nashadabdulrahiman/flask_blog:${{ github.sha }} nashadabdulrahiman/flask_blog:${{env.RELEASE_VERSION}}
-        docker push nashadabdulrahiman/flask_blog:${{ github.sha }}
-        docker push nashadabdulrahiman/flask_blog:${{ env.RELEASE_VERSION }}
-        docker push nashadabdulrahiman/flask_blog:latest
+
+    - name: Push to Docker Hub
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: nashadabdulrahiman/flask_blog
+        tag_with_ref: true
 
